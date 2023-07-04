@@ -2,25 +2,32 @@
  * @param {number[]} nums
  * @return {number}
  */
+
+//이전에 작성한 코드는
+//sort 함수로 인해 최악의 경우 시간복잡도가 O(nlogn) 이 나옴
+
+//그래서 새롭게 생각한 방식
+
+// 1 정렬을 하지 않고
+// 2 전체 배열에서 하나만 존재하는 애를
+// 3 찾아야함
+
+
+// 시공간복잡도 모두 O(n)이하 아닌가!
 var singleNumber = function(nums) {
-    nums.sort((a, b) => b - a);
-    
-    //0번째 인덱스에 있을 때
-    //정렬된 상황에서 index 0,1의 값이 같지 않다 == 0이 단독임
-    if(nums[0] !== nums[1])
-        return nums[0];
 
-    let len = nums.length;
+    let res = new Set();
+    let TriSum = 0;
     
-    //중간에 있을 때
-    //ex) 2, 2, 3, 4, 4
-    // 2, 3, 4만 떼어놓고 보면 셋다 숫자가 다름
-    // 3을 i 라고 생각한다면..
-    for(let i = 1; i < len; i++)    {
-        if(nums[i] !== nums[i - 1] && nums[i] !== nums[i + 1])
-            return nums[i];
+    let WholeSum = nums.reduce((acc, cur) => acc + cur, 0);
+
+    for(let num of nums)    {
+        //가지고 있지 않다면 
+        if(!(res.has(num)))    {
+            res.add(num);
+            TriSum += (3 * num);
+        }
     }
-
-    //끝에 있을 때
-    return nums[len - 1];
+    
+    return (TriSum - WholeSum) / 2;
 };
