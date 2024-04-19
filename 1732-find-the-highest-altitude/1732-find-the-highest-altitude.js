@@ -9,7 +9,8 @@ var largestAltitude = function(gain) {
     for(let g of gain) {
         cur += g;
         res = Math.max(res, cur);
+        console.log(res);
     }
-
-    return res;
+    
+    return res < 0 ? 0 : res;
 };
