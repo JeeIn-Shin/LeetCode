@@ -3,7 +3,7 @@
  * @return {number}
  */
 var largestAltitude = function(gain) {
-    let res = -Infinity;
+    let res = 0;
     let cur = 0;
 
     for(let g of gain) {
@@ -12,5 +12,5 @@ var largestAltitude = function(gain) {
         console.log(res);
     }
     
-    return res < 0 ? 0 : res;
+    return res;
 };
