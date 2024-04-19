@@ -4,6 +4,9 @@
  * @return {boolean}
  */
 var canPlaceFlowers = function(flowerbed, n) {
+    if (flowerbed.length === 1 && flowerbed[0] === 0)
+        return true;
+
     let cnt = n;
     let cur = 0;
     let lastIdx = flowerbed.length - 1;
