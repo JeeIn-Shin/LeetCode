@@ -19,11 +19,11 @@ var lemonadeChange = function(bills) {
         }
         //20에서는 five가 무조건 1이상 있어야함
         if (bill === 20)    {
-            if (five >= 3)  {
-                five = five - 3;
-            } else if (five > 0 && ten > 0)   {
+            if (five > 0 && ten > 0)  {
                 five--;
                 ten--;
+            } else if (five >= 3)   {
+                five = five - 3;
             } else {
                 return false;
             }
